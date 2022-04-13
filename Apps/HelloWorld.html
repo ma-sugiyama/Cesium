@@ -1,72 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Use correct character set. -->
     <meta charset="utf-8" />
+    <!-- Tell IE to use the latest, best version. -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Make the application on mobile take up the full browser screen and disable user scaling. -->
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
     />
-    <meta name="description" content="Use 3D Tiles Styling to assign colors based on material or find all office buildings.">
-    <meta name="cesium-sandcastle-labels" content="Beginner, 3D Tiles">
-    <title>Cesium Demo</title>
-    <script type="text/javascript" src="../Sandcastle-header.js"></script>
-    <script
-      type="text/javascript"
-      src="../CesiumUnminified/Cesium.js"
-      
-    ></script>
-
-  </head>
-  <body
-    class="sandcastle-loading"
-    data-sandcastle-bucket="bucket-requirejs.html"
-  >
-<style>
-      @import url(../templates/bucket.css);
+    <title>Hello World!</title>
+    <script src="../Build/Cesium/Cesium.js"></script>
+    <style>
+      @import url(../Build/Cesium/Widgets/widgets.css);
+      html,
+      body,
+      #cesiumContainer {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
     </style>
-    <div id="cesiumContainer" class="fullSize"></div>
-    <div id="loadingOverlay">
-      <h1>Loading...</h1>
-    </div>
-    <div id="toolbar">
-      <select class="cesium-button" id="dropdown">
-        <option value="0">Color By Building Material</option>
-        <option value="1">Color By Distance To Selected Location</option>
-        <option value="2">Highlight Residential Buildings</option>
-        <option value="3">Show Office Buildings Only</option>
-        <option value="4">Show Apartment Buildings Only</option>
-      </select>
-      <table class="infoPanel">
-        <tbody>
-          <tr>
-            <td>Click on a building to select as the central location</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <script id="cesium_sandcastle_script">
-function startup(Cesium) {
-    'use strict';
-//Sandcastle_Begin
-// How to use the 3D Tiles Styling language to style individual features, like buildings.
-// Styling language specification: https://github.com/CesiumGS/3d-tiles/tree/main/specification/Styling
-const viewer = new Cesium.Viewer("cesiumContainer", {
-  terrainProvider: Cesium.createWorldTerrain(),
-});
-const handler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas);
-
-// Add Cesium OSM buildings to the scene as our example 3D Tileset.
-const osmBuildingsTileset = Cesium.createOsmBuildings();
-viewer.scene.primitives.add(new Cesium.Cesium3DTileset({
-  url:"https://ma-sugiyama.github.io/Cesium/data/13102_chuo-ku_2020_bldg_low_resolution/tileset.json"
-}));//Sandcastle_End
-    Sandcastle.finishedLoading();
-}
-if (typeof Cesium !== 'undefined') {
-    window.startupCalled = true;
-    startup(Cesium);
-}
-</script>
-</body>
+  </head>
+  <body>
+    <div id="cesiumContainer"></div>
+    <script>
+      const viewer = new Cesium.Viewer("cesiumContainer");
+    </script>
+  </body>
 </html>
