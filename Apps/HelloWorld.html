@@ -25,10 +25,20 @@
       }
     </style>
   </head>
-  <body>
+    <body>
     <div id="cesiumContainer"></div>
     <script>
-      const viewer = new Cesium.Viewer("cesiumContainer");
+    // Your access token can be found at: https://cesium.com/ion/tokens.
+    // This is the default access token from your ion account
+    Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJhOGJhZWVmYi02YWIxLTRjM2QtYmJmMy1mNDM3ZDNhMjY0MzYiLCJpZCI6ODkxMTQsImlhdCI6MTY0OTgxMDI1OX0.P3wTeEH1VJ-Sy9YdlWiAmTQ3sr8tViXspaRxxanExv0'
+      
+    // Initialize the Cesium Viewer in the HTML element with the `cesiumContainer` ID.
+    const viewer = new Cesium.Viewer('cesiumContainer');
+
+    // Add Cesium OSM Buildings, a global 3D buildings layer.
+    const buildingTileset = viewer.scene.primitives.add(Cesium.createOsmBuildings());
+      
     </script>
+    </div>
   </body>
 </html>
