@@ -34,6 +34,8 @@
       
     // Initialize the Cesium Viewer in the HTML element with the `cesiumContainer` ID.
     const viewer = new Cesium.Viewer('cesiumContainer');
+      
+    viewer.dataSources.add(Cesium.KmlDataSource.load("https://ma-sugiyama.github.io/Cesium/data/GRID4_zone9_cesiumTest_Featu.geojson"));
 
     // Add Cesium OSM Buildings, a global 3D buildings layer.
     const buildingTileset = viewer.scene.primitives.add(Cesium.createOsmBuildings());
